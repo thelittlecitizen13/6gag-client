@@ -1,7 +1,7 @@
-import axios from 'axios';
+import { create } from 'axios';
 
 const server = 'http://localhost:8080/'
-const api = axios.create({
+const api = create({
     baseURL: server
 })
 const getAllGags = () =>{
@@ -9,4 +9,12 @@ const getAllGags = () =>{
     return data;
 }
 
-export default getAllGags;
+const getGag = (id) =>{
+    let data = api.get(`/gags/${id}`).then(({data}) => data);
+    return data;
+}
+
+const _getAllGags = getAllGags;
+export { _getAllGags as getAllGags };
+const _getGag = getGag;
+export { _getGag as getGag };

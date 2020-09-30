@@ -1,19 +1,36 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Container, Row, Card} from 'react-bootstrap';
 
+const getGag = require('../Controllers/GagsController').getGag;
+
 export default function GagPage({ match }) {
-    console.log("hi");
-    let id = match.params.id;
-    console.log(id);
-    const gags = require('../data/images.js').images;
-    var image = gags.find(gag => parseInt(gag.id) === parseInt(id));
+
+    const [isLoading, setLoading] = useState(true)
+    const [gag, setGag] = useState([]);
+    const id = match.params.id;
+
+    useEffect(() => {
+        async function fetchData(id) {
+            let gags = await getGag(id);
+            setGag(gags);
+            setLoading(false);
+        }
+        fetchData(id);
+    }, []);
+
+    
+
+    if (isLoading) {
+        return <div className="App">Loading...</div>;
+      }
+
     return (
         <Container>
             <Row className="text-center d-flex justify-content-center">
                 <Card className="card">
-                <Card.Title>{image.title}</Card.Title>
-                {console.log(image.path)}
-                <Card.Img src={`${image.path}`} variant="top" alt={image.alt} className = "cardImg"/>
+                <Card.Title>{gag.title}</Card.Title>
+                {console.log(gag.path)}
+                <Card.Img src={`${gag.path}`} variant="top" alt={gag.alt} className = "cardImg"/>
                 <Card.Body>
                     Comments:
                 </Card.Body>

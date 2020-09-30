@@ -2,17 +2,21 @@ import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Gag from './Gag.js';
 import {Container, Row} from 'react-bootstrap';
-import getAllGags from '../Controllers/GagsController';
-import axios from 'axios';
+
+const getAllGags = require('../Controllers/GagsController').getAllGags;
 
 export default function HomePage() {
+
     const [isLoading, setLoading] = useState(true)
     const [gags, setGags] = useState([]);
-    useEffect( async () => {
-        let gags = await getAllGags();
+
+    useEffect(()  => {
+        async function fetchData (id){
+            let gags = await getAllGags();
         setGags(gags);
         setLoading(false);
-        console.log(gags);
+        }
+        fetchData();
 
     }, []);
     
