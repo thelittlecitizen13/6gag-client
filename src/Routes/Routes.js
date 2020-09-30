@@ -10,6 +10,7 @@ export default class Routes extends Component {
             <Router history={history}>
                 <Switch>
                     <Route path="/" exact component={HomePage} />
+                    <Route path="/GagPage" exact component={HomePage} />
                     <Route path="/GagPage/:id"
                      render={({ match }) => <GagPage match={match} />}
                       />

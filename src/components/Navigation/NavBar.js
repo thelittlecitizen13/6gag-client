@@ -1,20 +1,25 @@
 import React from 'react'
-import {NavBar} from 'react-bootstrap'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import history from '../../history'
 
 export default function NavBar() {
+    const handleClick = (url) =>
+    {
+        history.push(url);
+    }
+    const goBack = () =>
+    {
+        history.goBack();
+    }
     return (
         <>
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+                <Navbar.Brand href="#home">6GAG</Navbar.Brand>
                 <Nav className="mr-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
+                <Nav.Link onClick={() => goBack()}>&laquo; Previous</Nav.Link>
+                <Nav.Link onClick={() => handleClick('/')}>Home</Nav.Link>
                 </Nav>
-                <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-info">Search</Button>
-                </Form>
             </Navbar>
          </>
     )

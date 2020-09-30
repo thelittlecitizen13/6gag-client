@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './Routes/Routes';
 import './index.css';
 import App from './App';
-import BackButton from './components/Buttons/BackButton';
+import NavBar from './components/Navigation/NavBar'
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -15,7 +15,8 @@ import BackButton from './components/Buttons/BackButton';
 
 ReactDOM.render(
   <div>
-    <BackButton className="backButton"></BackButton>
+    {/* <BackButton className="backButton"></BackButton> */}
+    <NavBar />
       <Router>
         <div className="App">
         <Routes/>
