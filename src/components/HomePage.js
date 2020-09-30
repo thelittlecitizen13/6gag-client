@@ -7,7 +7,10 @@ import {Container, Row} from 'react-bootstrap';
 
 export default function HomePage() {
     const gags = require('../data/images.js').images;
-
+    console.log(1);
+    
+    
+    
     const showGags = () => {
         var gagComponents = [];
         gags.forEach(gag =>
