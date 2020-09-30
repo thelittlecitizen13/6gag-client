@@ -1,6 +1,5 @@
 import React from 'react'
 import {Container, Row, Card} from 'react-bootstrap';
-import {useParams } from 'react-router-dom';
 
 export default function GagPage({ match }) {
     console.log("hi");

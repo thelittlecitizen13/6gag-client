@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Router, Switch, Route } from "react-router-dom";
-
 import HomePage from "../components/HomePage";
 import history from '../history';
 import GagPage from "../components/GagPage";
