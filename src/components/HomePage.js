@@ -13,8 +13,12 @@ export default function HomePage() {
     useEffect(()  => {
         async function fetchData (id){
             let gags = await getAllGags();
-        setGags(gags);
-        setLoading(false);
+            if (gags === '')
+            {
+                gags = [];
+            }
+            setGags(gags);
+            setLoading(false);
         }
         fetchData();
 
@@ -23,7 +27,7 @@ export default function HomePage() {
     // change it to map over the array
     const createGags = () => {
         var gagComponents = [];
-        console.log(typeof(gags));
+        console.log(gags);
         
         gags.forEach(gag =>
         {   

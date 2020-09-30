@@ -19,6 +19,7 @@ export default function NavBar() {
                 <Nav className="mr-auto">
                 <Nav.Link onClick={() => goBack()}>&laquo; Previous</Nav.Link>
                 <Nav.Link onClick={() => handleClick('/')}>Home</Nav.Link>
+                <Nav.Link onClick={() => handleClick('/post')}>Add Post</Nav.Link>
                 </Nav>
             </Navbar>
          </>

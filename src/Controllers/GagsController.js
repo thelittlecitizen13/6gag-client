@@ -14,6 +14,15 @@ const getGag = (id) =>{
     return data;
 }
 
+const postGag = (data) =>
+{
+    api.post("/gags/post", data)
+            .then(r => console.log(r));
+    
+}
+
+const _postGag = postGag;
+export { _postGag as postGag };
 const _getAllGags = getAllGags;
 export { _getAllGags as getAllGags };
 const _getGag = getGag;
