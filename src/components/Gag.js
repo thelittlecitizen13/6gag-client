@@ -10,10 +10,13 @@ export default function Gag(props) {
         var url = `/GagPage/${props.image.id}`;
         history.push(url);
     }
+    console.log(props.image.path);
+    
     return (
         <Card className="card">
             <Card.Title>{props.image.title}</Card.Title>
-            <Card.Img src={`${props.image.path}`} 
+            <Card.Img 
+            src={`${props.image.path}`} 
             variant="top" 
             alt={props.image.alt} 
             className = "cardImg"
