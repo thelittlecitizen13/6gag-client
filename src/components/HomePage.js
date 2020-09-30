@@ -1,18 +1,26 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Gag from './Gag.js';
 import {Container, Row} from 'react-bootstrap';
-
-
+import getAllGags from '../Controllers/GagsController';
+import axios from 'axios';
 
 export default function HomePage() {
-    const gags = require('../data/images.js').images;
-    console.log(1);
+    const [isLoading, setLoading] = useState(true)
+    const [gags, setGags] = useState([]);
+    useEffect( async () => {
+        let gags = await getAllGags();
+        setGags(gags);
+        setLoading(false);
+        console.log(gags);
+
+    }, []);
     
-    
-    
-    const showGags = () => {
+    // change it to map over the array
+    const createGags = () => {
         var gagComponents = [];
+        console.log(typeof(gags));
+        
         gags.forEach(gag =>
         {   
             var gagComponent = 
@@ -24,6 +32,11 @@ export default function HomePage() {
         var imageDivs = React.createElement('div', {}, gagComponents);
         return imageDivs;
     }
+
+    if (isLoading) {
+        return <div className="App">Loading...</div>;
+      }
+
     return (
         <>
         <div>
@@ -31,7 +44,7 @@ export default function HomePage() {
         </div>
         <Container>
         <Row className="text-center d-flex justify-content-center">
-                {showGags()}
+                {createGags()}
             </Row>
         </Container>
             
