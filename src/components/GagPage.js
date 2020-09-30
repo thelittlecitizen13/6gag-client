@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {Container, Row, Card} from 'react-bootstrap';
+import Gag from './Gag';
 
 const getGag = require('../Controllers/GagsController').getGag;
 
@@ -27,14 +28,7 @@ export default function GagPage({ match }) {
     return (
         <Container>
             <Row className="text-center d-flex justify-content-center">
-                <Card className="card">
-                <Card.Title>{gag.title}</Card.Title>
-                {console.log(gag.path)}
-                <Card.Img src={`${gag.path}`} variant="top" alt={gag.alt} className = "cardImg"/>
-                <Card.Body>
-                    Comments:
-                </Card.Body>
-                </Card>
+                <Gag image={gag} />
             </Row>
         </Container>
     )
