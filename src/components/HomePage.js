@@ -11,7 +11,7 @@ export default function HomePage() {
     const [gags, setGags] = useState([]);
 
     useEffect(()  => {
-        async function fetchData (id){
+        async function fetchData (){
             let gags = await getAllGags();
             if (gags === '')
             {

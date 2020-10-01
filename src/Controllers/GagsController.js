@@ -11,6 +11,8 @@ const getAllGags = () =>{
 
 const getGag = (id) =>{
     let data = api.get(`/gags/${id}`).then(({data}) => data);
+    console.log("get gag");
+    
     return data;
 }
 

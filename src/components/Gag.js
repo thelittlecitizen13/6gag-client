@@ -31,8 +31,8 @@ export default function Gag(props) {
                 </Card.Text>
                 <Card.Text>
                     <span className="font-weight-bold">Rating: </span>
-                    <LikeButton />
-                    <DislikeButton />
+                    {/* <LikeButton />
+                    <DislikeButton /> */}
                 </Card.Text>
             </Card.Body>
         </Card>

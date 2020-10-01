@@ -4,20 +4,23 @@ import Gag from './Gag';
 
 const getGag = require('../Controllers/GagsController').getGag;
 
-export default function GagPage({ match }) {
+export default function GagPage({match}) {
 
-    const [isLoading, setLoading] = useState(true)
+    const [isLoading, setLoading] = useState(true);
     const [gag, setGag] = useState([]);
+    // 
     const id = match.params.id;
 
     useEffect(() => {
         async function fetchData(id) {
+            console.log("fetchData");
+            
             let gags = await getGag(id);
             setGag(gags);
             setLoading(false);
         }
         fetchData(id);
-    });
+    }, []);
 
     
 
