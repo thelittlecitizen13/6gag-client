@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Router, Switch, Route } from "react-router-dom";
-import HomePage from "../HomePage";
+import HomePage from "../Pages/HomePage";
 import history from '../../history';
-import GagPage from "../GagPage";
-import UploadPost from "../UploadGag";
-import MostRated from "../MostRated";
+import GagPage from "../Pages/GagPage";
+import UploadPost from "../Pages/UploadGag";
+import MostRated from "../Pages/MostRated";
+import PostModal from '../Pages/PostModal';
 
 export default class Routes extends Component {
     render() {
@@ -18,7 +19,7 @@ export default class Routes extends Component {
                      render={({ match }) => <GagPage match={match} />}
                       />
                     {/* <Route path="/GagPage/:id" component={GagPage} /> */}
-                    <Route path="/Post" exact component={UploadPost} />
+                    <Route path="/Post" exact component={PostModal} />
                 </Switch>
             </Router>
         )

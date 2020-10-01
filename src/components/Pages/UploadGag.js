@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 
-const postGag = require('../Controllers/GagsController').postGag;
+const postGag = require('../../Controllers/GagsController').postGag;
  
 export default function UploadPost()
 {
@@ -67,15 +67,18 @@ export default function UploadPost()
                 onChange = {onChange}
                 />
             </Form.Group>
-            <Form.Group controlId="gagAlt">
-                <Form.Label>Alt</Form.Label>
-                <Form.Control 
-                type="text" 
-                placeholder="Enter photo alt" 
-                name = "alt"
-                required
-                onChange = {onChange}
-                />
+            <Form.Group as={Row} controlId="gagAlt">
+                <Form.Label column sm="2">Alt</Form.Label>
+                <Col sm="5">
+                    <Form.Control 
+                    type="text" 
+                    placeholder="Enter photo alt" 
+                    name = "alt"
+                    required
+                    onChange = {onChange}
+                    />
+                </Col>
+                
             </Form.Group>
             <Form.Group controlId="gagFile">
                 <Form.Label>File</Form.Label>

@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {Container, Row} from 'react-bootstrap';
-import Gag from './Gag';
+import Gag from '../Gag';
 
-const getGag = require('../Controllers/GagsController').getGag;
+const getGag = require('../../Controllers/GagsController').getGag;
 
 export default function GagPage({match}) {
 

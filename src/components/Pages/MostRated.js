@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Gag from './Gag.js';
-import {Container, Row} from 'react-bootstrap';
+import {Row, Container} from 'react-bootstrap';
+import Gag from '../Gag';
 
-const getAllGags = require('../Controllers/GagsController').getAllGags;
+const getAllGags = require('../../Controllers/GagsController').getAllGags;
 
-export default function HomePage() {
-
+export default function MostRated() {
     const [isLoading, setLoading] = useState(true)
     const [gags, setGags] = useState([]);
 
@@ -26,10 +24,11 @@ export default function HomePage() {
     
     // change it to map over the array
     const createGags = () => {
+        let sortedGags = gags;
+        sortedGags.sort((a, b) => (parseInt(b.liked) - parseInt(b.disliked) - (parseInt(a.liked) - parseInt(a.disliked))))
         var gagComponents = [];
-        console.log(gags);
         
-        gags.forEach(gag =>
+        sortedGags.forEach(gag =>
         {   
             var gagComponent = 
             <Row>
