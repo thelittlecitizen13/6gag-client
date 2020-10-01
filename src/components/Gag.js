@@ -3,6 +3,8 @@ import {Card, Container, Row} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Gag.css';
 import history from '../history';
+import LikeButton from './Buttons/LikeButton';
+import DislikeButton from './Buttons/DislikeButton';
 
 
 export default function Gag(props) {
@@ -29,6 +31,8 @@ export default function Gag(props) {
                 </Card.Text>
                 <Card.Text>
                     <span className="font-weight-bold">Rating: </span>
+                    <LikeButton />
+                    <DislikeButton />
                 </Card.Text>
             </Card.Body>
         </Card>
