@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Gag from '../Gag.js';
 import {Container, Row} from 'react-bootstrap';
+import Title from '../Defaults/Title';
 
 const getAllGags = require('../../Controllers/GagsController').getAllGags;
 
@@ -47,9 +48,6 @@ export default function HomePage() {
 
     return (
         <>
-        <div>
-            Welcome to 6gag
-        </div>
         <Container>
         <Row className="text-center d-flex justify-content-center">
                 {createGags()}

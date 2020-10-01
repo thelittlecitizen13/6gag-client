@@ -1,0 +1,14 @@
+.pageTitle{
+    border-bottom: black solid 3px;
+    display: block;
+    /* background-color: rgb(179, 177, 177); */
+    background-image: url('./photos/bricks2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    color: black;
+    text-align: center;
+}
+
+.titleImg{
+    height: 5em;
+}

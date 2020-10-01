@@ -46,9 +46,6 @@ export default function MostRated() {
 
     return (
         <>
-        <div>
-            Welcome to 6gag
-        </div>
         <Container>
         <Row className="text-center d-flex justify-content-center">
                 {createGags()}

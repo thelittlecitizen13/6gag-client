@@ -5,6 +5,7 @@ import Routes from './components/Routes/Routes';
 import './index.css';
 import App from './App';
 import NavBar from './components/Navigation/NavBar'
+import Title from './components/Defaults/Title'
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -15,8 +16,8 @@ import NavBar from './components/Navigation/NavBar'
 
 ReactDOM.render(
   <div>
-    {/* <BackButton className="backButton"></BackButton> */}
     <NavBar />
+    <Title />
       <Router>
         <div className="App">
         <Routes/>
