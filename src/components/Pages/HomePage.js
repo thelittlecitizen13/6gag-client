@@ -28,8 +28,8 @@ export default function HomePage() {
     const createGags = () => {
         var gagComponents = [];
         console.log(gags);
-        
-        gags.forEach(gag =>
+        let allGags = gags.reverse();
+        allGags.forEach(gag =>
         {   
             var gagComponent = 
             <Row>

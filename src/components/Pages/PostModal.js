@@ -2,11 +2,13 @@ import React, {useState} from "react";
 import { MDBFreeBird, MDBInput, MDBCol, MDBRow, MDBCardBody, MDBCardTitle, MDBBtn, MDBContainer, MDBEdgeHeader } from
 "mdbreact";
 import {Button} from 'react-bootstrap';
+import history from '../../history';
 
 const postGag = require('../../Controllers/GagsController').postGag;
 
 export default function EdgeHeaderPage(props){
 
+    const [isLoading, setLoading] = useState(false);
     const [postData, setPostData] = useState({
         name: "",
         title: "",
@@ -43,8 +45,15 @@ export default function EdgeHeaderPage(props){
     function onSubmit() {
         console.log(Object.keys(postData));
         
-        postGag(postData);
+        let res = postGag(postData);
+        const timer = setTimeout(() => {history.push('/')}, 1000);
+        setLoading(true);
+        return () => clearTimeout(timer);
     }
+
+    if (isLoading) {
+        return <div className="App">Loading...</div>;
+      }
 
     return (
       <MDBContainer className="mt-3">

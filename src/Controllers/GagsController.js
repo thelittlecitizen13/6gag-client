@@ -18,8 +18,11 @@ const getGag = (id) =>{
 
 const postGag = (data) =>
 {
+    var res;
     api.post("/gags/post", data)
-            .then(r => console.log(r));
+            .then((response) => 
+            res = response);
+    return res;
     
 }
 
