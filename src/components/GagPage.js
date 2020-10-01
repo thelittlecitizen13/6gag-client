@@ -20,7 +20,7 @@ export default function GagPage({match}) {
             setLoading(false);
         }
         fetchData(id);
-    }, []);
+    }, [id]);
 
     
 

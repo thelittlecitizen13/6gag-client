@@ -2,14 +2,19 @@ import React, {useState, useRef} from 'react'
 import Button from 'react-bootstrap/Button'
 
 export default function LikeButton() {
-    const [state, setState] = useState(false);
-    const ref = useRef(null)
+    const [dislikeState, setDislikeState] = useState(false);
+    const dislikeRef = useRef(null)
     
-    const handleClick = () =>{
-        setState(!state);
+    const handleDislikeClick = () =>{
+        setDislikeState(!dislikeState);
         
     }
     return (
-        <Button type="button" ref={ref} variant={state ? "danger" : "outline-danger"} onClick={() => handleClick()}>{state ? "Disliked" : "Dislike"}</Button>
+        <Button type="button" 
+        ref={dislikeRef} 
+        variant={dislikeState ? "danger" : "outline-danger"} 
+        onClick={() => handleDislikeClick()}>
+            {dislikeState ? "Disliked" : "Dislike"}
+        </Button>
     )
 }

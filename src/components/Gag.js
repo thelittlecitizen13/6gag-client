@@ -1,39 +1,36 @@
-import React from 'react'
-import {Card, Container, Row} from 'react-bootstrap';
+import React, { useState } from 'react'
+import {Card, Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Gag.css';
 import history from '../history';
-import LikeButton from './Buttons/LikeButton';
-import DislikeButton from './Buttons/DislikeButton';
+import GagRating from './GagRating';
 
 
 export default function Gag(props) {
-    //const image = require(`${props.image.path}`);
+
+    const [propsState, setpropsState] = useState(props);
+
     const handleClick = () =>{
-        var url = `/GagPage/${props.image.id}`;
+        var url = `/GagPage/${propsState.image.id}`;
         history.push(url);
     }
-    
+
     return (
         <Card className="card ">
-            <Card.Title>{props.image.title}</Card.Title>
+            <Card.Title>{propsState.image.title}</Card.Title>
             <Card.Img 
-            src={props.image.photo} 
+            src={propsState.image.photo} 
             variant="top" 
-            alt={props.image.alt} 
+            alt={propsState.image.alt} 
             className = "cardImg"
             onClick={() => handleClick()}
              />
             
             <Card.Body>
                 <Card.Text>
-                    <span className="font-weight-bold">Uploaded by:</span> {props.image.uploaderName}
+                    <span className="font-weight-bold">Uploaded by:</span> {propsState.image.uploaderName}
                 </Card.Text>
-                <Card.Text>
-                    <span className="font-weight-bold">Rating: </span>
-                    {/* <LikeButton />
-                    <DislikeButton /> */}
-                </Card.Text>
+                <GagRating liked={propsState.image.liked} disliked={propsState.image.disliked} />
             </Card.Body>
         </Card>
     )
