@@ -23,9 +23,15 @@ const postGag = (data) =>
     
 }
 
+const rateGag = (id, rate) =>{
+    api.post(`/gags/${id}/rate`, rate).then(r => console.log(r));
+}
+
 const _postGag = postGag;
 export { _postGag as postGag };
 const _getAllGags = getAllGags;
 export { _getAllGags as getAllGags };
 const _getGag = getGag;
 export { _getGag as getGag };
+const _rateGag = rateGag;
+export { _rateGag as rateGag };

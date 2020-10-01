@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Card, Button} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Gag.css';
 import history from '../history';
@@ -30,7 +30,7 @@ export default function Gag(props) {
                 <Card.Text>
                     <span className="font-weight-bold">Uploaded by:</span> {propsState.image.uploaderName}
                 </Card.Text>
-                <GagRating liked={propsState.image.liked} disliked={propsState.image.disliked} />
+                <GagRating gagId={propsState.image.id} liked={propsState.image.liked} disliked={propsState.image.disliked} />
             </Card.Body>
         </Card>
     )

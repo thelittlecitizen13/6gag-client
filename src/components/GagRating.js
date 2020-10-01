@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
 import {Button, Card} from 'react-bootstrap';
 
+const rateGag = require('../Controllers/GagsController').rateGag;
+
 export default function GagRating(props) {
     const [propsState, setpropsState] = useState({
+        id: props.gagId,
         liked: parseInt(props.liked),
         disliked: parseInt(props.disliked)
     });
@@ -19,10 +22,13 @@ export default function GagRating(props) {
             if (dislikeState)
             {
                 data.disliked --;
+                rateGag(propsState.id, {action: 'undislike'})
                 setpropsState(data);
+
             }
             else{
                 data.disliked ++;
+                rateGag(propsState.id, {action: 'dislike'})
                 setpropsState(data);
             }
         }
@@ -33,10 +39,12 @@ export default function GagRating(props) {
         if (likeState)
             {
                 data.liked --;
+                rateGag(propsState.id, {action: 'unlike'})
                 setpropsState(data);
             }
         else{
                 data.liked ++;
+                rateGag(propsState.id, {action: 'like'})
                 setpropsState(data);
             }
     }
