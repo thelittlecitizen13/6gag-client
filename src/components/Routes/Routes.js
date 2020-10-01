@@ -4,6 +4,7 @@ import HomePage from "../HomePage";
 import history from '../../history';
 import GagPage from "../GagPage";
 import UploadPost from "../UploadGag";
+import MostRated from "../MostRated";
 
 export default class Routes extends Component {
     render() {
@@ -12,6 +13,7 @@ export default class Routes extends Component {
                 <Switch>
                     <Route path="/" exact component={HomePage} />
                     <Route path="/GagPage" exact component={HomePage} />
+                    <Route path="/MostRated" exact component={MostRated} />
                     <Route path="/GagPage/:id"
                      render={({ match }) => <GagPage match={match} />}
                       />
