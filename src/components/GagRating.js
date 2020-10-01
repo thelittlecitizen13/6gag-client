@@ -24,14 +24,18 @@ export default function GagRating(props) {
             {
                 data.disliked --;
                 rateGag(propsState.id, {action: 'undislike'})
-                store.set('DislikedPosts', {[propsState.id] : false})
+                let rates = store.get('DislikedPosts') || {};
+                rates[propsState.id] = false;
+                store.set('DislikedPosts', rates)
                 setpropsState(data);
 
             }
             else{
                 data.disliked ++;
                 rateGag(propsState.id, {action: 'dislike'})
-                store.set('DislikedPosts', {[propsState.id] : true})
+                let rates = store.get('DislikedPosts') || {};
+                rates[propsState.id] = true;
+                store.set('DislikedPosts', rates)
                 setpropsState(data);
             }
         }
@@ -45,13 +49,18 @@ export default function GagRating(props) {
             {
                 data.liked --;
                 rateGag(propsState.id, {action: 'unlike'})
-                store.set('LikedPosts', {[propsState.id] : false})
+                let rates = store.get('LikedPosts') || {};
+                rates[propsState.id] = false;
+                store.set('LikedPosts', rates)
                 setpropsState(data);
             }
         else{
                 data.liked ++;
                 rateGag(propsState.id, {action: 'like'})
-                store.set('LikedPosts', {[propsState.id] : true})
+                let rate = {[propsState.id] : true};
+                let rates = store.get('LikedPosts') || {};
+                rates[propsState.id] = true
+                store.set('LikedPosts', rates)
                 setpropsState(data);
             }
 
