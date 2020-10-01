@@ -1,5 +1,6 @@
 import React from 'react'
-import Card from 'react-bootstrap/Card';
+import {Card, Container, Row} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './Gag.css';
 import history from '../history';
 
@@ -12,7 +13,7 @@ export default function Gag(props) {
     }
     
     return (
-        <Card className="card">
+        <Card className="card ">
             <Card.Title>{props.image.title}</Card.Title>
             <Card.Img 
             src={props.image.photo} 
@@ -23,7 +24,12 @@ export default function Gag(props) {
              />
             
             <Card.Body>
-                Comments:
+                <Card.Text>
+                    <span className="font-weight-bold">Uploaded by:</span> {props.image.uploaderName}
+                </Card.Text>
+                <Card.Text>
+                    <span className="font-weight-bold">Rating: </span>
+                </Card.Text>
             </Card.Body>
         </Card>
     )
