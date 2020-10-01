@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Button, Card} from 'react-bootstrap';
 
+var store = require('store');
 const rateGag = require('../Controllers/GagsController').rateGag;
 
 export default function GagRating(props) {
@@ -23,16 +24,20 @@ export default function GagRating(props) {
             {
                 data.disliked --;
                 rateGag(propsState.id, {action: 'undislike'})
+                store.set('DislikedPosts', {[propsState.id] : false})
                 setpropsState(data);
 
             }
             else{
                 data.disliked ++;
                 rateGag(propsState.id, {action: 'dislike'})
+                store.set('DislikedPosts', {[propsState.id] : true})
                 setpropsState(data);
             }
         }
     }
+
+
     function handleLikeClick(){
         setLikeState(!likeState);
         let data = propsState;
@@ -40,14 +45,50 @@ export default function GagRating(props) {
             {
                 data.liked --;
                 rateGag(propsState.id, {action: 'unlike'})
+                store.set('LikedPosts', {[propsState.id] : false})
                 setpropsState(data);
             }
         else{
                 data.liked ++;
                 rateGag(propsState.id, {action: 'like'})
+                store.set('LikedPosts', {[propsState.id] : true})
                 setpropsState(data);
             }
+
     }
+
+    useEffect(() => {
+        
+        
+        try{
+            if (store.get('LikedPosts')[propsState.id] == true)
+            {
+                setLikeState(true);
+            }
+            else
+            {
+                setLikeState(false);
+            }
+        }
+        catch{
+            
+        }
+        
+        try{
+            if (store.get('DislikedPosts')[propsState.id] == true)
+            {
+                setDislikeState(true);
+            }
+            else
+            {
+                setDislikeState(false);
+            }
+        }
+        catch{
+        }
+       
+    }, [])
+    
     return (
         <>
             <Card.Text>
@@ -59,7 +100,7 @@ export default function GagRating(props) {
                         onClick={() => handleLikeClick()}>
                             {likeState ? "Liked" : "Like"}
                         </Button>
-
+                        
                         <Button type="button" 
                         variant={dislikeState ? "danger" : "outline-danger"} 
                         onClick={() => handleDislikeClick()}>
